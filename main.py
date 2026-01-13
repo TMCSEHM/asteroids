@@ -9,6 +9,10 @@ def main():
     fps_clock = pygame.time.Clock()
     dt = 0
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while True:
@@ -18,8 +22,9 @@ def main():
                 return
 
         screen.fill("black") # fill screen black, screen is a surface object
-        player.draw(screen) # re-render player on screen each frame
-        player.update(dt) # allow rotation of left and right *hopefully*
+        for d in drawable:
+            d.draw(screen)
+        updatable.update(dt) 
         pygame.display.flip() # display update
 
         dt = fps_clock.tick(60) / 1000
