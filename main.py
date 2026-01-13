@@ -14,7 +14,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        pygame.Surface.fill(screen, "black") # fill screen black
+        screen.fill("black") # fill screen black, screen is a surface object
         pygame.display.flip() # display update
 
         dt = fps_clock.tick(60) / 1000
