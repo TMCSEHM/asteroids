@@ -19,6 +19,7 @@ def main():
 
         screen.fill("black") # fill screen black, screen is a surface object
         player.draw(screen) # re-render player on screen each frame
+        player.update(dt) # allow rotation of left and right *hopefully*
         pygame.display.flip() # display update
 
         dt = fps_clock.tick(60) / 1000
